@@ -34,3 +34,102 @@ This data dictionary describes the columns in the dataset used for binary classi
 * **Domain Knowledge:** Leveraging domain knowledge about machine operation and failure modes will be crucial for feature engineering, model selection, and interpreting results.
 
 This data dictionary provides a solid foundation for understanding and working with your "Binary Classification of Machine Failures" dataset. Remember to always refer back to this dictionary during your data analysis and machine learning workflow. Good luck!
+
+
+## Data Analysis Results
+
+## Descriptive Statistics
+
+![logo](images/1_statistics.png)
+
+## 
+
+![logo](images/2_classimbalance.png)
+
+
+##
+
+![logo](images/3_classimbalance_types.png)
+
+
+##
+
+![logo](images/4_machinefailure_type.png)
+
+
+##
+
+![logo](images/5_processtemperature_failure.png)
+
+##
+
+![logo](images/6_airtemperature_failure.png)
+
+##
+
+![logo](images/7_process_temperature_type.png)
+
+
+##
+
+![logo](images/8_airtemperature_violin.png)
+
+##
+
+![logo](images/9_violin_features_failure.png)
+
+##
+
+![logo](images/10_violin_features_type.png)
+
+##
+
+![logo](images/11_corrmatrix.png)
+
+##
+
+![logo](images/12_productID_count.png)
+
+##
+
+![logo](images/13_productID_highestaverage_failure.png)
+
+##
+
+![logo](images/14_productID_leastfailures_differentthanzero.png)
+
+##
+
+![logo](images/15_productID_highestcountfailure.png)
+
+##
+
+![logo](images/16_modelresults.png)
+
+## Summary of the Findings
+
+
+## Acknowledgements
+
+
+## MIT License
+
+Copyright (c) [2025] [Dr. Vagner Zeizer Carvalho Paes]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
