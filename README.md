@@ -237,6 +237,7 @@ Real-time monitoring and alerts can provide early warnings of potential hazards.
 
 ## Acknowledgements
 
+Kaggle is acknowledged for having generated this artificial dataset, as well provided a warm competition to model this highly imbalanced binary classification problem.
 
 ## MIT License
 
