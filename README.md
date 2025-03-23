@@ -49,53 +49,52 @@ The next figure shows the proportion of each class, 0 being the *normal function
 
 ![logo](images/2_classimbalance.png)
 
-## Class imbalance as a function of type...
+## Class imbalance as a function of operational mode
 
-The following figure depicts the class imbalance, displaying the number of instances, for each kind of...
+The following figure depicts the class imbalance, displaying the number of instances, for each kind of operational mode. The "L" mode dispalys the largest number of instances of failures and non-failures modes.
 
 ![logo](images/3_classimbalance_types.png)
 
-## Machine failure proportion by each kind of type...
+## Machine failure proportion by each kind of operational mode
 
-The following figure shows the machine failure proportion according to each kind of type...
+The following figure shows the machine failure proportion according to each kind of operational mode. In spite of the high number of imbalance concerning the number of instances for each operational mode, the proportion of failures in each operational mode is relatively balanced.
 
 ![logo](images/4_machinefailure_type.png)
 
 ## Boxplot of features according to Machine Failure
 
-The following figure shows a boxplot of selected features according to Machine Failure.
+The following figure shows a boxplot of selected features according to Machine Failure, from which one can observe that failures-events tend to have a larger number for **Air Temperature, Process Temperature, and Torque**.
 
 
 ![logo](images/5_processtemperature_failure.png)
 
 ## Violinplot of features according to Machine Failure
 
-The following figure shows a violinplot of selected features according to Machine Failure.
+The following figure shows a violinplot of selected features according to Machine Failure, evidencing what was stated in the previous figure.
 
 ![logo](images/6_airtemperature_failure.png)
 
 ## Boxplot of features according to the kind of...
 
-The next figure shows a boxplot of three selected features according to the kind of...
-
+The next figure shows a boxplot of three selected features according to the kind of operational mode. Curiously, there is a balance in the range of values for **Air Temperature, Process Temperature, and Torque** as a function of the operational mode.
 
 ![logo](images/7_process_temperature_type.png)
 
 ## Violinplot of features according to kind of...
 
-The following figure shows a violinplot of features according to kind of...
+The following figure shows a violinplot of features according to kind of operational mode, evidencing what was stated about the previous figure.
 
 ![logo](images/8_airtemperature_violin.png)
 
 ## Violin plot for numeric features according to Machine Failure
 
-The next figure shows a violin plot for numeric features according to Machine Failure attribute.
+The next figure shows a violin plot for numeric features according to Machine Failure attribute, from which one can clearly notice that for **Tool wear, TWF, HDF, PWF, OSF, and RNF** there is a clear distinct behavior concerning failures and non-failure events. 
 
 ![logo](images/9_violin_features_failure.png)
 
 ## Violin plot for numeric features according to kind of
 
-The following figure shows a violin plot for numeric features according to kind of
+The following figure shows a violin plot for numeric features according to kind of operational, and there seems to be a similar behavior accross each kind of operational mode, curiously.
 
 ![logo](images/10_violin_features_type.png)
 
@@ -118,26 +117,123 @@ The next figure shows the top 20 Product's ID with the highest average failure r
 
 ![logo](images/13_productID_highestaverage_failure.png)
 
-## Product's IDs with the least number of failuers
+## Product's IDs with the least number of failures
 
-The next figure shows the Product's IDs with the least number of failuers, but different than zero.
+The next figure shows the Product's IDs with the least number of failures, but different than zero.
 
 ![logo](images/14_productID_leastfailures_differentthanzero.png)
 
-## Product's IDs with the Highest Count of Failure's Rate
+## Product's IDs with the Highest Count of Failure's
 
-The following figure shows the Product's IDs with the Highest Count of Failure's Rate, showing 14 Product's IDs have a total number of failure counts totaling more than 100.
+The following figure shows the Product's IDs with the Highest Count of Failure's, showing that 14 Product's IDs have a total number of failure counts totaling more than 100.
 
 ![logo](images/15_productID_highestcountfailure.png)
 
 ## Machine Learning Modeling Results
 
-The next figure shows the results on the testing set by using a XGBoost Classifier, using stratification of the classes and a shuffle split(**StratifiedShuffleSplit**), by considering the number of splits equal to 2. The f1-score of the majority is perfect (1.0), and for the minority class there is a downgrade in the performance regarding the recall metrics (around 0.78), showing that in some situations there could be a failure instance being classified as a normal instance. However, **the AUC metrics lays around 90%, which evidences a good overall performance for this classification problem**.
+The next figure shows the results on the testing set by using a **XGBoost Classifier**, using stratification of the classes and a shuffle split(**StratifiedShuffleSplit**) by considering the number of splits equal to 2. The f1-score of the majority class is perfect (1.0), and for the minority class there is a downgrade in the performance regarding the recall metrics (around 0.78), showing that in some situations there could be a failure instance being classified as a normal instance (False Negative). However, **the AUC metrics lays around 90%, which evidences a good overall performance for this classification problem**.
 
 ![logo](images/16_modelresults.png)
 
-## Summary of the Findings
+## Summary of the Key Findings
 
+1. Data Characteristics and Preprocessing:
+
+- Feature Scaling Required: Numerical features have different scales, necessitating scaling.
+- Multicollinearity Present: High correlation exists between 'Air temperature' and 'Process temperature', and 'Rotational speed' and 'Torque'.
+- Significant Class Imbalance: The dataset is heavily imbalanced, with normal functioning states vastly outnumbering failure states (more than 60 times).
+- Failure Type Flags: Flags like TWF, HDF, PWF, OSF, and RNF provide detailed failure mode information.
+
+2. **Data Analysis Results**:
+
+- Descriptive Statistics: 
+The provided table shows the basic statistical summary of all the numerical features.
+- Class Imbalance:
+The dataset is extremely imbalanced, with a large majority of normal operation instances.
+Operational mode 'L' has the highest number of instances of both failures and non-failures.
+The proportion of failures across different operational modes is relatively balanced.
+- Feature Distributions and Failure:
+Failure events tend to occur with higher 'Air Temperature', 'Process Temperature', and 'Torque' values.
+Tool wear, TWF, HDF, PWF, OSF, and RNF all show distinct behavior between failure and non failure events.
+Operational modes do not significantly affect the range of the numerical features.
+- Correlation:
+A correlation matrix reveals relationships between features, with highly correlated features being dropped.
+- Product ID Analysis:
+The top 20 Product IDs with the highest number of failure instances are identified.
+Some Product IDs have 100% or 75% average failure rates.
+Product IDs with the least number of failures, that are greater than zero, were identified.
+The products IDs with the highest count of failures show that 14 of the products had more than 100 failures.
+Machine Learning Results:
+
+3. **Model: XGBoost Classifier.**
+Evaluation: StratifiedShuffleSplit (2 splits).
+- Performance:
+Perfect f1-score for the majority class (1.0).
+Recall for the minority class is around 0.78 (some false negatives).
+AUC is approximately 90%, indicating good overall performance.
+
+## Real-World Usage Scenarios
+
+1. **Predictive Maintenance and Reduced Downtime**:
+
+**Real-world scenario**: A large manufacturing plant relies on complex machinery. Unplanned downtime due to failures can halt production, leading to substantial financial losses.
+Usage:
+The XGBoost model, with its 90% AUC, can be deployed to predict impending machine failures.
+Alerts are generated when the model detects a high probability of failure, allowing maintenance teams to schedule proactive repairs.
+This minimizes unexpected downtime, optimizes maintenance schedules, and increases production efficiency.
+**By identifying which product IDs have the highest failure rates, maintenance can be focused on those parts.**
+**Economic Impact**: Significant cost savings due to reduced downtime, improved equipment lifespan, and optimized resource allocation.
+
+2. **Quality Control and Defect Prevention**:
+
+**Real-world scenario**: A high-precision component manufacturer needs to ensure consistent product quality. Machine failures can lead to defects and scrap.
+Usage:
+The model can identify operational parameters (temperature, torque, tool wear) that correlate with failures.
+Real-time monitoring of these parameters allows for adjustments to prevent defects before they occur.
+Analysis of the failure type flags (TWF, HDF, PWF, OSF, RNF) can pinpoint specific failure modes, enabling targeted quality control measures.
+**Economic Impact**: Reduced scrap rates, improved product consistency, and enhanced customer satisfaction.
+
+3. **Process Optimization**:
+
+**Real-world scenario**: An industrial facility wants to optimize its production processes to minimize energy consumption and maximize output.
+Usage:
+Analyzing the correlation between operational parameters and failure rates can identify inefficient operating conditions.
+For example, understanding how temperature and torque affect failure can lead to adjustments that reduce stress on machinery.
+The operational mode analysis can help determine which modes are most efficient and reliable.
+The data analysis that shows the product IDs with the least amount of failures, can show which products are more reliable, and therefore which ones to create more of.
+**Economic Impact**: Reduced energy consumption, increased throughput, and optimized resource utilization.
+
+4. **Failure Mode Analysis and Design Improvements**:
+
+**Real-world scenario**: An engineering company designs and manufactures industrial equipment. They want to improve the reliability of their products.
+Usage:
+Analyzing the failure type flags and correlating them with operational parameters can provide insights into the root causes of failures.
+This information can be used to redesign components or modify operating procedures to prevent recurring failures.
+The product ID failure rate analysis can identify specific components or designs that are prone to failure.
+**Economic Impact**: Improved product reliability, reduced warranty claims, and enhanced brand reputation.
+
+5. **Supply Chain Management**:
+
+Real-world scenario: A company that relies on just in time manufacturing, needs to know when parts are going to fail to properly order new parts.
+Usage:
+By predicting machine failure, and therefore part failure, the company can properly predict when new parts need to be ordered.
+This will reduce the amount of time that a machine is down, waiting for parts to arrive.
+**Economic Impact**: Reduced down time, and reduced storage costs.
+
+6. **Safety and Risk Management**:
+
+**Real-world scenario**: Industries with potentially hazardous machinery (e.g., chemical plants, power generation) require strict safety protocols.
+Usage:
+Predictive maintenance can prevent catastrophic failures that could lead to accidents or environmental damage.
+Real-time monitoring and alerts can provide early warnings of potential hazards.
+**Economic Impact**: Reduced risk of accidents, minimized environmental impact, and improved regulatory compliance.
+
+**Key Implementation Considerations**:
+
+1. **Real-time data integration**: The model needs to be integrated with real-time sensor data from the machinery.
+2. **Cloud-based solutions**: Cloud based solutions can be used to store and process the large amounts of data that are produced by modern industrial equipment.
+3. **User interface development**: A user-friendly interface is needed to display predictions and alerts to maintenance personnel.
+4. **Continuous model improvement**: The model should be continuously updated with new data to maintain its accuracy.
 
 ## Acknowledgements
 
