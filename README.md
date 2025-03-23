@@ -33,76 +33,106 @@ This data dictionary describes the columns in the dataset used for binary classi
 * **Failure Type Flags:** The flags TWF, HDF, PWF, OSF, and RNF provide valuable insights into failure modes. Analyze their distributions, correlations with other features, and their relationship to the target variable 'Machine failure'.  Determine if they are mutually exclusive or can co-occur.
 * **Domain Knowledge:** Leveraging domain knowledge about machine operation and failure modes will be crucial for feature engineering, model selection, and interpreting results.
 
-This data dictionary provides a solid foundation for understanding and working with your "Binary Classification of Machine Failures" dataset. Remember to always refer back to this dictionary during your data analysis and machine learning workflow. Good luck!
-
+This data dictionary provides a solid foundation for understanding and working with the dataset "Binary Classification of Machine Failures" dataset.
 
 ## Data Analysis Results
 
 ## Descriptive Statistics
 
+The following table shows descriptive statistics of the features presented in the dataset.
+
 ![logo](images/1_statistics.png)
 
-## 
+## Class imbalance
+
+The next figure shows the proportion of each class, 0 being the *normal functioning state* and 1  the *failure state*, for all the instances dataset, evidencing a highly imbalanced dataset, where the majority class is more than 60 times prevalent than the minority one.
 
 ![logo](images/2_classimbalance.png)
 
+## Class imbalance as a function of type...
 
-##
+The following figure depicts the class imbalance, displaying the number of instances, for each kind of...
 
 ![logo](images/3_classimbalance_types.png)
 
+## Machine failure proportion by each kind of type...
 
-##
+The following figure shows the machine failure proportion according to each kind of type...
 
 ![logo](images/4_machinefailure_type.png)
 
+## Boxplot of features according to Machine Failure
 
-##
+The following figure shows a boxplot of selected features according to Machine Failure.
+
 
 ![logo](images/5_processtemperature_failure.png)
 
-##
+## Violinplot of features according to Machine Failure
+
+The following figure shows a violinplot of selected features according to Machine Failure.
 
 ![logo](images/6_airtemperature_failure.png)
 
-##
+## Boxplot of features according to the kind of...
+
+The next figure shows a boxplot of three selected features according to the kind of...
+
 
 ![logo](images/7_process_temperature_type.png)
 
+## Violinplot of features according to kind of...
 
-##
+The following figure shows a violinplot of features according to kind of...
 
 ![logo](images/8_airtemperature_violin.png)
 
-##
+## Violin plot for numeric features according to Machine Failure
+
+The next figure shows a violin plot for numeric features according to Machine Failure attribute.
 
 ![logo](images/9_violin_features_failure.png)
 
-##
+## Violin plot for numeric features according to kind of
+
+The following figure shows a violin plot for numeric features according to kind of
 
 ![logo](images/10_violin_features_type.png)
 
-##
+## Correlation Matrix
+
+The next figure shows the correlation matrix comprising all the features present in the dataset, except the target variable (failure or not), ID, product ID, and type... The highly correlated features were dropped from this dataset.
 
 ![logo](images/11_corrmatrix.png)
 
-##
+## Top 20 Product's ID with the largest number of instances of failures 
+
+The next figure shows the top 20 Product's ID with the largest number of instances of failures.
 
 ![logo](images/12_productID_count.png)
 
-##
+## Product's IDs with the Highest Average Failure Rate
+
+The next figure shows the top 20 Product's ID with the highest average failure rates. There are only two product's IDS with 100% average failure rate, and only two with 75% average failure rate.
+
 
 ![logo](images/13_productID_highestaverage_failure.png)
 
-##
+## Product's IDs with the least number of failuers
+
+The next figure shows the Product's IDs with the least number of failuers, but different than zero.
 
 ![logo](images/14_productID_leastfailures_differentthanzero.png)
 
-##
+## Product's IDs with the Highest Count of Failure's Rate
+
+The following figure shows the Product's IDs with the Highest Count of Failure's Rate, showing 14 Product's IDs have a total number of failure counts totaling more than 100.
 
 ![logo](images/15_productID_highestcountfailure.png)
 
-##
+## Machine Learning Modeling Results
+
+The next figure shows the results on the testing set by using a XGBoost Classifier, using stratification of the classes and a shuffle split(**StratifiedShuffleSplit**), by considering the number of splits equal to 2. The f1-score of the majority is perfect (1.0), and for the minority class there is a downgrade in the performance regarding the recall metrics (around 0.78), showing that in some situations there could be a failure instance being classified as a normal instance. However, **the AUC metrics lays around 90%, which evidences a good overall performance for this classification problem**.
 
 ![logo](images/16_modelresults.png)
 
